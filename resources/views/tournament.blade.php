@@ -15,7 +15,7 @@
 <div class="jumbotron">
     <div class="container">
         <div><h1 class="display-3">Okay!</h1></div>
-        <p>A tournament {{ $tournament->title }}} has been created. Teams are generated. It's time to launch the game.<br>
+        <p>A tournament {{ $tournament->title }} has been created. Teams are generated. It's time to launch the game.<br>
             For {{ $countMembers }} teams to play with each other twice (home and away), you need {{ $launches }} launches of the games ({{ $matchesPerWeek }} per week).
         </p>
     </div>
