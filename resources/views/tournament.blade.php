@@ -77,9 +77,9 @@
                                 <td class="col-5 text-right">Team2</td>
                             </tr>
                             <tr class="result-1">
-                                <td class="col-5">Team2</td>
+                                <td class="col-5">Team3</td>
                                 <td class="col-2 text-center"></td>
-                                <td class="col-5 text-right">Team1</td>
+                                <td class="col-5 text-right">Team4</td>
                             </tr>
 
                             </tbody>

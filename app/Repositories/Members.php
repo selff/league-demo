@@ -2,31 +2,22 @@
 
 namespace App\Repositories;
 
-use App\Models\Member;
 use App\Models\Tournament;
 
 class Members implements Interfaces\MembersInterface
 {
     /**
-     * @param array $data
-     * @return mixed
-     */
-    public function create(array $data)
-    {
-        return Member::updateOrCreate($data);
-    }
-
-    /**
      * @throws \App\Exceptions\StartException
      */
     public function generate(Tournament $tournament)
     {
-        $teamsRepo = new Teams;
-        $teamsRepo->generate();
-        $teamsRandom = $teamsRepo->getRandomByCount($tournament->members_count);
+        if ($tournament->members()->count() === 0) {
 
-        foreach($teamsRandom as $team) {
-            $this->create(['tournament_id' => $tournament->id, 'team_name' => $team->name]);
+            $teamsRandom = (new Teams)->getRandomByCount($tournament->members_count);
+
+            foreach($teamsRandom as $team) {
+                $tournament->members()->create(['team_name' => $team->name]);
+            }
         }
     }
 }

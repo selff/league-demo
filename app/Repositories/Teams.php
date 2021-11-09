@@ -17,6 +17,10 @@ class Teams implements Interfaces\TeamsInterface
      */
     public function generate()
     {
+        if ($this->count() !== 0) {
+            return;
+        }
+
         if (Storage::exists(Config::get('constants.options.football_clubs_list'))) {
             $data = Storage::get(Config::get('constants.options.football_clubs_list'));
             $clubs = json_decode($data, false);
@@ -38,10 +42,19 @@ class Teams implements Interfaces\TeamsInterface
     }
 
     /**
+     * @return mixed
+     */
+    public function count()
+    {
+        return Team::count();
+    }
+
+    /**
      * @throws \App\Exceptions\StartException
      */
     public function getRandomByCount(int $count)
     {
+        $this->generate();
         $teams = $this->all();
         if (empty($teams)) {
             return [];
