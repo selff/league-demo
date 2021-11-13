@@ -5,7 +5,6 @@ namespace App\Providers;
 use App\Events\TournamentStarted;
 use App\Listeners\TournamentStart;
 use Illuminate\Auth\Events\Registered;
-use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
 

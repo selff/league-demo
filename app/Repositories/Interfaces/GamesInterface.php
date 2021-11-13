@@ -5,7 +5,7 @@ namespace App\Repositories\Interfaces;
 use App\Models\Team;
 use App\Models\Tournament;
 
-interface MembersInterface
+interface GamesInterface
 {
-    public function generateTournamentMembers(Tournament $tournament);
+    public function launch(Tournament $tournament);
 }

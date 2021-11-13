@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\TournamentStarted;
 use App\Models\Tournament;
 use App\Repositories\Interfaces\TournamentsInterface;
 use App\Services\TournamentService;
-
 
 class TournamentController extends Controller
 {
@@ -20,6 +20,7 @@ class TournamentController extends Controller
     /**
      * Tournament start
      *
+     * @throws \App\Exceptions\StartException
      */
     public function start(TournamentService $tournamentService)
     {
@@ -36,11 +37,13 @@ class TournamentController extends Controller
      */
     public function show($id): \Illuminate\Contracts\View\View
     {
-        $tournament = Tournament::findOrFail($id);
+        $tournament = Tournament::with('members')->findOrFail($id);
+
         return view('tournament', [
             'week' => 0,
             'tournament' => $tournament,
-            'members' => $tournament->members
+            'members' => $tournament->members,
+            'schedule' => (new TournamentService)->getMatchesByWeek($tournament, 0),
         ]);
     }
 }

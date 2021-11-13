@@ -27,4 +27,15 @@ class Tournament extends Model
         return $this->hasMany(Member::class);
     }
 
+    public function numberOfMatchesPerWeek()
+    {
+        if ($this->mebers_count === 0) {
+            return 0;
+        } elseif($this->mebers_count % 2) {
+            return $this->mebers_count;
+        } else {
+            return $this->mebers_count / 2;
+        }
+    }
+
 }

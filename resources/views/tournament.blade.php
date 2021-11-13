@@ -15,7 +15,7 @@
 <div class="jumbotron">
     <div class="container">
         <div><h1 class="display-3">Okay!</h1></div>
-        <p>A tournament {{ $tournament->title }} has been created. Teams are generated. It's time to launch the game.<br>
+        <p>A tournament «{{ $tournament->title }}» has been created. Teams are generated. It's time to launch the game.<br>
             For {{ $countMembers }} teams to play with each other twice (home and away), you need {{ $launches }} launches of the games ({{ $matchesPerWeek }} per week).
         </p>
     </div>
@@ -71,17 +71,15 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr class="result-0">
-                                <td class="col-5">Team1</td>
+                            @for ($i=$week;$i<2;$i++)
+
+                            <tr class="result-{{ $i  }}">
+                                <td class="col-5">{{ $schedule[$i]['owner_team_name'] }}</td>
                                 <td class="col-2 text-center"></td>
-                                <td class="col-5 text-right">Team2</td>
-                            </tr>
-                            <tr class="result-1">
-                                <td class="col-5">Team3</td>
-                                <td class="col-2 text-center"></td>
-                                <td class="col-5 text-right">Team4</td>
+                                <td class="col-5 text-right">{{ $schedule[$i]['guest_team_name'] }}</td>
                             </tr>
 
+                            @endfor
                             </tbody>
                         </table>
                     </td>

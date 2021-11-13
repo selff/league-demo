@@ -9,9 +9,9 @@ class Members implements Interfaces\MembersInterface
     /**
      * @throws \App\Exceptions\StartException
      */
-    public function generate(Tournament $tournament)
+    public function generateTournamentMembers(Tournament $tournament)
     {
-        if ($tournament->members()->count() === 0) {
+        if (!$tournament->members()->count()) {
 
             $teamsRandom = (new Teams)->getRandomByCount($tournament->members_count);
 

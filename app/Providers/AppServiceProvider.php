@@ -2,12 +2,14 @@
 
 namespace App\Providers;
 
+use App\Repositories\Interfaces\GamesInterface;
 use App\Repositories\Members;
 use App\Repositories\Interfaces\MembersInterface;
 use App\Repositories\Teams;
 use App\Repositories\Interfaces\TeamsInterface;
 use App\Repositories\Tournaments;
 use App\Repositories\Interfaces\TournamentsInterface;
+use App\Repositories\Games;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,6 +21,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->app->bind(GamesInterface::class, Games::class);
         $this->app->bind(MembersInterface::class, Members::class);
         $this->app->bind(TeamsInterface::class, Teams::class);
         $this->app->bind(TournamentsInterface::class, Tournaments::class);
