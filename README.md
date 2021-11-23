@@ -16,6 +16,7 @@ We all know about the well-known and commonly used features of the framework:
 - Routing engine
 - Dependency injection container
 - Еloquent
+- Middleware
 
 In this project, I used the following patterns:
 - Services

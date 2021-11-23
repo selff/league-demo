@@ -91,6 +91,16 @@ return [
             'prefix_indexes' => true,
         ],
 
+        'testing' => [
+            'driver'        => env('DB_TEST_DRIVER'),
+            'host'          => env('DB_HOST', '127.0.0.1'),
+            'port'          => env('DB_PORT', '3306'),
+            'database'      => env('DB_DATABASE', 'laravel_test'),
+            'username'      => env('DB_USERNAME', 'new'),
+            'password'      => env('DB_PASSWORD', 'QWERTY123456'),
+            'unix_socket'   => env('DB_SOCKET', ''),
+        ],
+
     ],
 
     /*
