@@ -7,5 +7,6 @@ use App\Models\Tournament;
 
 interface GamesInterface
 {
-    public function launch(Tournament $tournament);
+    public function __construct(Tournament $tournament);
+    public function launch();
 }

@@ -14,7 +14,7 @@ class Game extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'tournament_id', 'owner_team_id', 'guest_team_id', 'owner_goals', 'guest_goals'
+        'tournament_id', 'owner_team_id', 'guest_team_id', 'owner_goals', 'guest_goals', 'week'
     ];
 
     public function tournament()

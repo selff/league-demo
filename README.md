@@ -12,15 +12,5 @@
 This is a demo project simulator of the group stage of the Champions League. 
 The goal of the project is to use the capabilities of the Laravel framework.
 
-We all know about the well-known and commonly used features of the framework:
-- Routing engine
-- Dependency injection container
-- Еloquent
-- Middleware
-
-In this project, I used the following patterns:
-- Services
-- Repositories
-- Events
-
 I will replenish this project with new ideas
+Coming soon

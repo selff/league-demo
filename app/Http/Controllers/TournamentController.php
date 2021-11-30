@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Events\TournamentStarted;
 use App\Models\Tournament;
+use App\Repositories\Games;
 use App\Repositories\Interfaces\TournamentsInterface;
 use App\Services\TournamentService;
 
@@ -38,12 +39,14 @@ class TournamentController extends Controller
     public function show($id): \Illuminate\Contracts\View\View
     {
         $tournament = Tournament::with('members')->findOrFail($id);
+        $playedMatches = new Games($tournament);
 
         return view('tournament', [
-            'week' => 0,
+            'week' => $playedMatches->getCurrentWeek(),
             'tournament' => $tournament,
             'members' => $tournament->members,
-            'schedule' => (new TournamentService)->getMatchesByWeek($tournament, 0),
+            'matches' => $playedMatches->findAllByWeeks(),
+            'schedule' => (new TournamentService)->getMatchesByWeek($tournament, $playedMatches->getCurrentWeek()),
         ]);
     }
 }

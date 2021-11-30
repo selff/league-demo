@@ -18,4 +18,9 @@ class Tournaments implements TournamentsInterface
             ]
         );
     }
+
+    public function find($id): Tournament
+    {
+        return Tournament::with('members')->findOrFail($id);
+    }
 }
